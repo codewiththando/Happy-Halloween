@@ -4,28 +4,64 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Happy Halloween 🎃</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <svg id="pumpkin" viewBox="0 0 200 190" role="button" aria-label="Toggle the pumpkin light" tabindex="0">
-    <path d="M100 38c0-14 6-24 16-30" stroke="#6bbf59" stroke-width="10" stroke-linecap="round" fill="none"/>
-    <ellipse class="body" cx="100" cy="112" rx="88" ry="70" fill="#ff8a1f"/>
-    <path d="M100 42c-30 14-30 126 0 140M100 42c30 14 30 126 0 140" stroke="#d96a08" stroke-width="5" fill="none" opacity=".6"/>
-    <g class="glow" fill="#ffe27a">
-      <path d="M58 92l22 -4-8 24z"/>
-      <path d="M142 92l-22 -4 8 24z"/>
-      <path d="M62 128q38 44 76 0q-10 14-20 10l-8 8-10-8-10 8-8-8q-10 4-20-10z"/>
-    </g>
-  </svg>
-
-  <div class="win">
-    <div class="bar"><i></i><i></i><i></i><span>halloween.js</span></div>
-    <pre id="code"></pre>
-    <div class="out" id="out">&nbsp;</div>
+  <div class="bg"></div>
+  <div class="moon"></div>
+  <div class="ghostwrap">
+    <svg class="ghost" viewBox="0 0 80 100" aria-hidden="true">
+      <path d="M10 95V40a30 30 0 0 1 60 0v55l-10-9-10 9-10-9-10 9-10-9z" fill="#f3eefc"/>
+      <circle cx="30" cy="42" r="5" fill="#160d2b"/>
+      <circle cx="50" cy="42" r="5" fill="#160d2b"/>
+      <ellipse cx="40" cy="58" rx="6" ry="8" fill="#160d2b"/>
+    </svg>
   </div>
+  <canvas id="sky" aria-hidden="true"></canvas>
 
-  <p class="hint">tap the pumpkin 🎃</p>
+  <main id="main">
+    <h1>Happy Halloween</h1>
+
+    <svg id="pumpkin" viewBox="0 0 200 190" role="button" aria-label="Toggle the pumpkin light" tabindex="0">
+      <defs>
+        <radialGradient id="g" cx="50%" cy="55%" r="55%">
+          <stop offset="0%" stop-color="#fff2a8"/>
+          <stop offset="100%" stop-color="#ff9a1f" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <path d="M100 40c0-14 6-24 16-32" stroke="#6bbf59" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <ellipse class="body" cx="100" cy="112" rx="88" ry="70" fill="#ff8a1f"/>
+      <path d="M100 42c-30 14-30 126 0 140M100 42c30 14 30 126 0 140" stroke="#d96a08" stroke-width="5" fill="none" opacity=".6"/>
+      <g class="glow">
+        <ellipse cx="100" cy="112" rx="62" ry="48" fill="url(#g)"/>
+        <g id="face" fill="#ffe27a">
+          <path d="M56 90l24-6-8 28z"/>
+          <path d="M144 90l-24-6 8 28z"/>
+          <path d="M62 128q38 44 76 0q-10 14-20 10l-8 8-10-8-10 8-8-8q-10 4-20-10z"/>
+        </g>
+      </g>
+    </svg>
+
+    <section class="term">
+      <div class="bar"><i></i><i></i><i></i><span>trick-or-treat.sh</span></div>
+      <div class="screen" id="term" aria-live="polite"></div>
+      <div class="actions" id="actions" hidden>
+        <button data-kind="treat">🍬 Treat</button>
+        <button data-kind="trick">💀 Trick</button>
+      </div>
+    </section>
+
+    <div class="row">
+      <button id="share" class="ghostbtn">📲 Send to a friend</button>
+      <span id="count">🍬 0</span>
+    </div>
+
+    <footer>
+      Built with HTML, CSS and JavaScript by
+      <a href="https://github.com/codewiththando" target="_blank" rel="noopener">@codewiththando</a> 👻
+    </footer>
+  </main>
 
   <script src="script.js"></script>
 </body>
