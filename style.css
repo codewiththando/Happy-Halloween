@@ -1,0 +1,129 @@
+:root {
+  --bg: #160d2b;
+  --panel: #21143d;
+  --ink: #f3eefc;
+  --dim: #9b8cc4;
+  --orange: #ff8a1f;
+  --green: #8cf29a;
+  --pink: #ff7ad9;
+  color-scheme: dark;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html { height: 100%; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(ellipse at 50% 30%, #2e1a57 0%, var(--bg) 65%);
+  color: var(--ink);
+  font-family: "Fira Code", ui-monospace, Menlo, Consolas, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 24px 16px;
+  overflow-x: hidden;
+}
+
+/* Pumpkin */
+#pumpkin {
+  width: min(62vw, 260px);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  filter: drop-shadow(0 0 28px rgba(255, 138, 31, .55));
+  transition: filter .3s, transform .15s;
+  animation: bob 3.2s ease-in-out infinite;
+}
+#pumpkin:active { transform: scale(.95); }
+#pumpkin.off { filter: none; }
+#pumpkin .glow { transition: opacity .3s; }
+#pumpkin.off .glow { opacity: 0; }
+#pumpkin.off .body { fill: #a6540f; }
+
+@keyframes bob { 50% { transform: translateY(-8px); } }
+
+/* Code window */
+.win {
+  width: min(100%, 430px);
+  background: var(--panel);
+  border: 1px solid #3a2766;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.bar {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 9px 12px;
+  background: #2a1a4d;
+  color: var(--dim);
+  font-size: 12px;
+}
+.bar i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: inline-block;
+}
+.bar i:nth-child(2) { background: var(--pink); }
+.bar i:nth-child(3) { background: var(--green); }
+.bar span { margin-left: 8px; }
+
+pre {
+  margin: 0;
+  padding: 14px 16px;
+  font: inherit;
+  font-size: 13.5px;
+  line-height: 1.65;
+  min-height: 196px;
+  white-space: pre-wrap;
+}
+
+/* Syntax colors */
+.k { color: var(--pink); }
+.s { color: var(--green); }
+.c { color: var(--dim); }
+.n { color: var(--orange); }
+
+/* Blinking cursor */
+.cur {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: var(--orange);
+  vertical-align: -2px;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.out {
+  padding: 12px 16px;
+  border-top: 1px solid #3a2766;
+  font-size: 15px;
+  color: var(--orange);
+  font-weight: 600;
+  min-height: 46px;
+}
+
+.hint { color: var(--dim); font-size: 12px; margin: 0; }
+
+/* Floating emojis */
+.fly {
+  position: fixed;
+  font-size: 26px;
+  pointer-events: none;
+  animation: up 2.2s ease-out forwards;
+}
+@keyframes up { to { transform: translateY(-70vh) rotate(25deg); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  #pumpkin { animation: none; }
+  .fly { animation-duration: .01s; }
+  .cur { animation: none; }
+}

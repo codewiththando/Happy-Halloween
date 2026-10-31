@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy Halloween 🎃</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg id="pumpkin" viewBox="0 0 200 190" role="button" aria-label="Toggle the pumpkin light" tabindex="0">
+    <path d="M100 38c0-14 6-24 16-30" stroke="#6bbf59" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <ellipse class="body" cx="100" cy="112" rx="88" ry="70" fill="#ff8a1f"/>
+    <path d="M100 42c-30 14-30 126 0 140M100 42c30 14 30 126 0 140" stroke="#d96a08" stroke-width="5" fill="none" opacity=".6"/>
+    <g class="glow" fill="#ffe27a">
+      <path d="M58 92l22 -4-8 24z"/>
+      <path d="M142 92l-22 -4 8 24z"/>
+      <path d="M62 128q38 44 76 0q-10 14-20 10l-8 8-10-8-10 8-8-8q-10 4-20-10z"/>
+    </g>
+  </svg>
+
+  <div class="win">
+    <div class="bar"><i></i><i></i><i></i><span>halloween.js</span></div>
+    <pre id="code"></pre>
+    <div class="out" id="out">&nbsp;</div>
+  </div>
+
+  <p class="hint">tap the pumpkin 🎃</p>
+
+  <script src="script.js"></script>
+</body>
+</html>
